@@ -7,10 +7,12 @@ const theme = {
     darkGray: "#757575",
     paleGreen: "#82AFAA",
     lightGray: "#CCC",
+    red: "#CF2F31",
   },
   sizes: {
     icon: 28,
     bigIcon: 30,
+    smallIcon: 16,
   },
 };
 

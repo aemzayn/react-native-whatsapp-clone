@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import theme from "../constants/theme";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import FloatButton from "../shared/FloatButton";
 
 const STATUS = [
   {
@@ -64,7 +65,7 @@ function Status({ myStatus, image, publishTime, username }) {
 
 export default function StatusScreen() {
   return (
-    <View style={{ flex: 1, position: "relative" }}>
+    <View style={{ flex: 1, position: "relative", backgroundColor: "white" }}>
       <View style={{ paddingTop: 5 }}>
         <Status
           myStatus
@@ -81,28 +82,29 @@ export default function StatusScreen() {
         keyExtractor={(item) => item.id}
       />
       <View style={styles.actionButtonsContainer}>
-        <Pressable
-          style={[styles.actionButtons, styles.newStatusButton]}
-          android_ripple={{ color: theme.colors.lightGray, radius: 28 }}
-          android_disableSound
+        <FloatButton
+          relative
+          rippleRadius={28}
+          extendStyle={{
+            width: 55,
+            height: 55,
+            backgroundColor: "#EDF5F7",
+            marginBottom: 20,
+          }}
         >
           <MaterialCommunityIcons
             name="pencil"
             size={theme.sizes.icon}
             color="#476A6E"
           />
-        </Pressable>
-        <Pressable
-          style={[styles.actionButtons, styles.cameraButton]}
-          android_ripple={{ color: theme.colors.lightGray, radius: 35 }}
-          android_disableSound
-        >
+        </FloatButton>
+        <FloatButton relative rippleRadius={35}>
           <MaterialIcons
             name="camera-alt"
             size={theme.sizes.bigIcon}
             color="white"
           />
-        </Pressable>
+        </FloatButton>
       </View>
     </View>
   );
@@ -131,26 +133,9 @@ const styles = StyleSheet.create({
   },
   actionButtonsContainer: {
     position: "absolute",
-    bottom: 15,
-    right: 15,
+    bottom: 20,
+    right: 20,
     alignItems: "center",
     justifyContent: "center",
-  },
-  actionButtons: {
-    width: 55,
-    height: 55,
-    elevation: 3,
-    borderRadius: 99,
-    backgroundColor: theme.colors.lightGreen,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  newStatusButton: {
-    backgroundColor: "#EDF5F7",
-    marginBottom: 20,
-  },
-  cameraButton: {
-    width: 70,
-    height: 70,
   },
 });

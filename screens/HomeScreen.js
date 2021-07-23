@@ -1,14 +1,17 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import ChatList from "../components/ChatList";
-import NewMessageButton from "../components/NewMessageButton";
 import Layout from "../components/Layout";
+import FloatButton from "../shared/FloatButton";
 
 export default function HomeScreen() {
   return (
     <Layout>
       <ChatList />
-      <NewMessageButton />
+      <FloatButton>
+        <MaterialIcons name="chat" size={24} color="#fff" />
+      </FloatButton>
     </Layout>
   );
 }
