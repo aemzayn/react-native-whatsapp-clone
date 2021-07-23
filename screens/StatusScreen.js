@@ -10,6 +10,7 @@ import {
 import theme from "../constants/theme";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import FloatButton from "../shared/FloatButton";
+import Layout from "../shared/Layout";
 
 const STATUS = [
   {
@@ -65,7 +66,7 @@ function Status({ myStatus, image, publishTime, username }) {
 
 export default function StatusScreen() {
   return (
-    <View style={{ flex: 1, position: "relative", backgroundColor: "white" }}>
+    <Layout>
       <View style={{ paddingTop: 5 }}>
         <Status
           myStatus
@@ -106,7 +107,7 @@ export default function StatusScreen() {
           />
         </FloatButton>
       </View>
-    </View>
+    </Layout>
   );
 }
 

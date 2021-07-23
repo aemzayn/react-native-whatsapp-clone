@@ -1,18 +1,10 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StyleSheet, ActivityIndicator } from "react-native";
+import { StyleSheet, ActivityIndicator, StatusBar } from "react-native";
 import { useFonts, Roboto_500Medium } from "@expo-google-fonts/roboto";
-
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-
-import HomeScreen from "./screens/HomeScreen";
-import StatusScreen from "./screens/StatusScreen";
-import { NavigationContainer } from "@react-navigation/native";
-import CustomTabBar from "./components/CustomTabBar";
-import CallScreen from "./screens/CallScreen";
-import CameraScreen from "./screens/CameraScreen";
-
-const Tab = createMaterialTopTabNavigator();
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import RootNavigator from "./navigation";
+import theme from "./constants/theme";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -24,14 +16,10 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />}>
-        <Tab.Screen name="Camera" component={CameraScreen} />
-        <Tab.Screen name="Chats" component={HomeScreen} />
-        <Tab.Screen name="Status" component={StatusScreen} />
-        <Tab.Screen name="Calls" component={CallScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <RootNavigator />
+      <StatusBar backgroundColor={theme.colors.tealGreenDark} />
+    </SafeAreaProvider>
   );
 }
 

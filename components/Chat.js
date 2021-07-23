@@ -1,15 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import theme from "../constants/theme";
 import globalStyle from "../style/globalStyle";
 
-export default function Chat({ item }) {
+export default function Chat({ item, stackNavigation }) {
   return (
     <Pressable
       style={styles.chat}
       android_ripple={{ color: "#ccc" }}
       android_disableSound
+      onPress={() => stackNavigation.navigate("ChatRoom")}
     >
       <Image source={{ uri: item.avatar }} style={styles.chatImage} />
       <View style={styles.chatInfo}>

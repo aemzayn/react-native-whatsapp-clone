@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import theme from "../constants/theme";
-import Header from "./Header";
 import { MaterialIcons } from "@expo/vector-icons";
 
 export default function CustomTabBar({
@@ -12,73 +11,76 @@ export default function CustomTabBar({
   position,
 }) {
   return (
-    <View>
-      <Header />
-      <View style={{ flexDirection: "row", position: "relative" }}>
-        {state?.routes?.map((route, index) => {
-          const { options } = descriptors[route.key];
-          const label =
-            options.tabBarLabel !== undefined
-              ? options.tabBarLabel
-              : options.title !== undefined
-              ? options.title
-              : route.name;
+    <View
+      style={{
+        flexDirection: "row",
+        position: "relative",
+        backgroundColor: theme.colors.tealGreen,
+      }}
+    >
+      {state?.routes?.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
 
-          const isFocused = state.index === index;
+        const isFocused = state.index === index;
 
-          const onPress = () => {
-            const event = navigation.emit({
-              type: "tabPress",
-              target: route.key,
-              canPreventDefault: true,
-            });
+        const onPress = () => {
+          const event = navigation.emit({
+            type: "tabPress",
+            target: route.key,
+            canPreventDefault: true,
+          });
 
-            if (!isFocused && !event.defaultPrevented) {
-              navigation.navigate(route.name);
-            }
-          };
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
 
-          const onLongPress = () => {
-            navigation.emit({
-              type: "tabLongPress",
-              target: route.key,
-            });
-          };
+        const onLongPress = () => {
+          navigation.emit({
+            type: "tabLongPress",
+            target: route.key,
+          });
+        };
 
-          return (
-            <Pressable
-              key={index}
-              accessibilityRole="button"
-              accessibilityState={isFocused ? { selected: true } : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
-              onPress={onPress}
-              onLongPress={onLongPress}
-              style={[styles.tabItem, { flex: label !== "Camera" ? 1 : 0 }]}
-              android_ripple={{ color: theme.colors.paleGreen }}
-              android_disableSound
-            >
-              {label === "Camera" ? (
-                <View>
-                  <MaterialIcons
-                    name="photo-camera"
-                    size={24}
-                    color={theme.colors.paleGreen}
-                    style={{
-                      paddingHorizontal: 12,
-                    }}
-                  />
-                </View>
-              ) : (
-                <Text style={[styles.tabLabel, isFocused && styles.focusedTab]}>
-                  {label}
-                </Text>
-              )}
-              {isFocused && <View style={styles.activeBorder} />}
-            </Pressable>
-          );
-        })}
-      </View>
+        return (
+          <Pressable
+            key={index}
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={[styles.tabItem, { flex: label !== "Camera" ? 1 : 0 }]}
+            android_ripple={{ color: theme.colors.paleGreen }}
+            android_disableSound
+          >
+            {label === "Camera" ? (
+              <View>
+                <MaterialIcons
+                  name="photo-camera"
+                  size={24}
+                  color={theme.colors.paleGreen}
+                  style={{
+                    paddingHorizontal: 12,
+                  }}
+                />
+              </View>
+            ) : (
+              <Text style={[styles.tabLabel, isFocused && styles.focusedTab]}>
+                {label}
+              </Text>
+            )}
+            {isFocused && <View style={styles.activeBorder} />}
+          </Pressable>
+        );
+      })}
     </View>
   );
 }

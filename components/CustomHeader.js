@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../constants/theme";
 
-export default function Header() {
+export default function CustomHeader() {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.header}>

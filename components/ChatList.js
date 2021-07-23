@@ -135,11 +135,13 @@ const DATA = [
   },
 ];
 
-export default function ChatList() {
+export default function ChatList({ stackNavigation }) {
   return (
     <FlatList
       data={DATA}
-      renderItem={({ item }) => <Chat item={item} />}
+      renderItem={({ item }) => (
+        <Chat item={item} stackNavigation={stackNavigation} />
+      )}
       keyExtractor={(item) => item.id}
     />
   );

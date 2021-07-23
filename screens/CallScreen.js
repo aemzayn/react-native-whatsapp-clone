@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../constants/theme";
-import Layout from "../components/Layout";
+import Layout from "../shared/Layout";
 import FloatButton from "../shared/FloatButton";
 
 const CALLS = [
