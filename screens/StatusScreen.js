@@ -82,22 +82,22 @@ export default function StatusScreen() {
         keyExtractor={(item) => item.id}
       />
       <View style={styles.actionButtonsContainer}>
-        <FloatButton
-          relative
-          rippleRadius={28}
-          extendStyle={{
-            width: 55,
-            height: 55,
-            backgroundColor: "#EDF5F7",
-            marginBottom: 20,
-          }}
-        >
-          <MaterialCommunityIcons
-            name="pencil"
-            size={theme.sizes.icon}
-            color="#476A6E"
-          />
-        </FloatButton>
+        <View style={{ marginBottom: 20 }}>
+          <FloatButton
+            relative
+            extendStyle={{
+              width: 55,
+              height: 55,
+              backgroundColor: "#EDF5F7",
+            }}
+          >
+            <MaterialCommunityIcons
+              name="pencil"
+              size={theme.sizes.icon}
+              color="#476A6E"
+            />
+          </FloatButton>
+        </View>
         <FloatButton relative rippleRadius={35}>
           <MaterialIcons
             name="camera-alt"

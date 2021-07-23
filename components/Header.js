@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../constants/theme";
 
@@ -11,17 +11,21 @@ export default function Header() {
           <Text style={styles.headerTitle}>WhatsApp</Text>
         </View>
         <View style={styles.settings}>
-          <MaterialIcons
-            name="search"
-            style={styles.searchIcon}
-            size={theme.sizes.icon}
-            color="white"
-          />
-          <MaterialCommunityIcons
-            name="dots-vertical"
-            size={theme.sizes.icon}
-            color="white"
-          />
+          <Pressable>
+            <MaterialIcons
+              name="search"
+              style={styles.searchIcon}
+              size={theme.sizes.icon}
+              color="white"
+            />
+          </Pressable>
+          <Pressable>
+            <MaterialCommunityIcons
+              name="dots-vertical"
+              size={theme.sizes.icon}
+              color="white"
+            />
+          </Pressable>
         </View>
       </View>
     </View>

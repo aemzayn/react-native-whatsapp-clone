@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import theme from "../constants/theme";
 import globalStyle from "../style/globalStyle";
 
@@ -11,11 +11,7 @@ export default function FloatButton({
   rippleRadius,
 }) {
   return (
-    <Pressable
-      android_ripple={{
-        color: rippleColor ?? theme.colors.lightGray,
-        radius: rippleRadius,
-      }}
+    <View
       style={[
         styles.button,
         globalStyle.rowCenter,
@@ -24,20 +20,33 @@ export default function FloatButton({
           bottom: relative ? 0 : 20,
           right: relative ? 0 : 20,
         },
-        extendStyle,
       ]}
     >
-      {children}
-    </Pressable>
+      <Pressable
+        android_ripple={{
+          color: rippleColor ?? theme.colors.lightGray,
+          radius: rippleRadius,
+        }}
+        style={[styles.pressable, extendStyle]}
+      >
+        {children}
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
+    // backgroundColor: theme.colors.lightGreen,
+    elevation: 3,
+    borderRadius: 99,
+    overflow: "hidden",
+  },
+  pressable: {
     height: 65,
     width: 65,
     backgroundColor: theme.colors.lightGreen,
-    elevation: 3,
-    borderRadius: 99,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
