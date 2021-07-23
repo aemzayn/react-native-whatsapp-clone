@@ -6,9 +6,11 @@ const theme = {
     blue: "#34B7F1",
     darkGray: "#757575",
     paleGreen: "#82AFAA",
+    lightGray: "#CCC",
   },
   sizes: {
     icon: 28,
+    bigIcon: 30,
   },
 };
 

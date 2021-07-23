@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import theme from "../constants/theme";
 import globalStyle from "../style/globalStyle";
 
 export default function Chat({ item }) {
-  const [pressed, setPressed] = useState(false);
   return (
     <Pressable
-      style={[
-        styles.chat,
-        {
-          backgroundColor: pressed ? "#E2E8F0" : "white",
-        },
-      ]}
-      // onPressIn={() => setPressed(true)}
-      // onPressOut={() => setPressed(false)}
+      style={styles.chat}
       android_ripple={{ color: "#ccc" }}
       android_disableSound
     >
